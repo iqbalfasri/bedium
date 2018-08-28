@@ -1,0 +1,151 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap-grid.min.css');
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif:400,700');
+/* @import url('https://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css'); */
+
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	font-family: 'Noto Serif', serif;
+	-webkit-font-smoothing: antialiased;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+
+.card-container {
+	/* background-color: red; */
+	/* margin: 50px auto; */
+}
+
+.card-list {
+	color: #000;
+	display: block;
+	padding: 20px;
+	text-decoration: none;
+}
+
+.card-list:hover {
+	background-color: #111111;
+	color: #fff;
+}
+
+.card-list h1 {
+	font-size: 32px;
+	margin-bottom: 20px;
+}
+
+.card-list p {
+	opacity: .7;
+}
+
+
+/* header */
+.header {
+	display: flex;
+	height: 200px;
+	justify-content: space-between;
+	align-items: center;
+	/* background-color: red; */
+	padding: 30px;
+}
+
+.header .recent-title {
+	font-weight: bold;
+	display: flex;
+	font-size: 62px;
+	/* text-align: center; */
+}
+
+.flx-end {
+	align-items: flex-end;
+}
+
+
+
+/* Auth Button */
+.auth-btn {
+	text-decoration: none;
+	padding: 10px;
+	background: #333;
+	color: #ffffff;
+	margin: 0 5px;
+	border-radius: 2px;
+	font-size: 14px;
+}
+
+
+/* Login Page */
+.signin, .signup {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	/* background-color: #393e46; */
+}
+
+.signin .box-auth {
+	padding: 20px;
+	display: flex;
+	background-color: white;
+	flex-direction: column;
+	width: 400px;
+	max-width: 400px;
+	border-radius: 3px;
+}
+
+.signin .box-auth input {
+	padding: 10px;
+	border-radius: 3px;
+	outline: none;
+	border: 1px solid #f8b500;
+	margin: 10px;
+}
+
+.signin .box-auth button {
+	margin: 20px 0;
+	padding: 15px;
+	outline: none;
+	border-radius: 3px;
+	background-color: #f8b500;
+	color: white;
+}
