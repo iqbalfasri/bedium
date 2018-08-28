@@ -11,4 +11,7 @@ const config = {
 
 const fire = firebase.initializeApp(config);
 
+// Provider for Google Signin
+export const googleProvider = new firebase.auth.GoogleAuthProvider();
+
 export default fire;

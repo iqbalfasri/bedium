@@ -1,10 +1,10 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap-grid.min.css');
 @import url('https://fonts.googleapis.com/css?family=Rubik:300,400,500,700');
-/* @import url('https://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css'); */
+@import url('https://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css');
 
 
 html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
@@ -49,7 +49,40 @@ table {
 	border-spacing: 0;
 }
 
+a {
+	text-decoration: none !important;
+}
 
+/* Default Heading */
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.5em;
+}
+
+h3 {
+  font-size: 1.17em;
+}
+
+h4 {
+  font-size: 1.00em;
+}
+
+h5 {
+  font-size: 0.83em;
+}
+
+h6 {
+  font-size: 0.67em;
+}
+
+/* Root El */
+:root {
+  --input-padding-x: .75rem;
+  --input-padding-y: .75rem;
+}
 
 .card-container {
 	/* background-color: red; */
@@ -110,6 +143,11 @@ table {
 	margin: 0 5px;
 	border-radius: 2px;
 	font-size: 14px;
+	transition: .2s all ease-in-out;
+}
+.auth-btn:hover {
+	color: #fff;
+	background-color: #000;
 }
 
 
@@ -139,25 +177,27 @@ table {
 	line-height: 3;
 }
 
-.auth .box-auth input {
-	padding: 15px;
-	border-radius: 3px;
-	outline: none;
-	border: none;
-	border: 1px solid #111111;
-	margin: 10px 0;
-	font-size: 14px;
-}
-
 .auth .box-auth button {
 	font-size: 14px;
-	margin: 20px 0;
+	margin: 20px 0 0;
 	padding: 15px;
 	outline: none;
 	border-radius: 3px;
 	border: none;
 	background-color: #111111;
 	color: white;
+	cursor: pointer;
+}
+
+.auth .box-auth button#google {
+	font-size: 14px;
+	margin: 20px 0 20px;
+	padding: 15px;
+	outline: none;
+	border-radius: 3px;
+	border: 1px solid #111111;
+	background-color: #ffffff;
+	color: #111111;
 	cursor: pointer;
 }
 
@@ -182,4 +222,37 @@ table {
 
 .main-wrapper {
 	height: 100vh;
+}
+
+/* Form */
+.form-input {
+	padding: 15px;
+	border-radius: 3px;
+	outline: none;
+	border: none;
+	border: 1px solid #111111;
+	margin: 10px 0;
+	font-size: 14px;
+	width: 100%;
+}
+
+.form-label-group {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.form-label-group label {
+	font-weight: 500;
+}
+
+.my-button {
+	font-size: 14px;
+	margin: 20px 0 0;
+	padding: 15px;
+	outline: none;
+	border-radius: 3px;
+	border: none;
+	background-color: #111111;
+	color: white;
+	cursor: pointer;
 }

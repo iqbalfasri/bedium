@@ -24,6 +24,7 @@ class App extends Component {
         this.setState({
           authed: true,
         })
+        console.log(user);
       } else {
         this.setState({
           authed: false,

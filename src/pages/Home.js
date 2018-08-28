@@ -17,7 +17,7 @@ export default class Home extends Component {
   }
 
   componentDidMount() {
-    const dbref = fire.database().ref().child('badium');
+    const dbref = fire.database().ref().child('bedium');
     dbref.on('child_added', (snap) => {
       const posts = this.state.posts;
       posts.push({
@@ -52,7 +52,7 @@ export default class Home extends Component {
   }
 
   submit() {
-    const dbref = fire.database().ref().child('badium');
+    const dbref = fire.database().ref().child('bedium');
     dbref.push().set({
       post_title: this.state.title,
       post_content: this.state.content
@@ -117,7 +117,7 @@ const HeaderLink = (props) => {
     return (
       <div className="">
         <Link className="auth-btn" to="/addpost">Add Post</Link>
-        <button onClick={() => fire.auth().signOut()}>Logout</button>
+        <button style={{backgroundColor: 'transparent', color: 'red', border: 'none', cursor: 'pointer', outline: 'none'}} onClick={() => fire.auth().signOut()}>Logout</button>
       </div>
     )
   }
