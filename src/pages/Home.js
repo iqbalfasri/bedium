@@ -79,34 +79,34 @@ export default class Home extends Component {
 
   render() {
     return (
-      <div className="container">
-        <div className="row header">
-          <div className="">
+      <div>
+        <div className="menu-nav">
+          <div className="container d-flex justify-content-between">
             <h1 className="recent-title">Bedium</h1>
+            <HeaderLink isLogged={this.state.authed} />
           </div>
-          <HeaderLink isLogged={this.state.authed} />
         </div>
-        <div className="card-container">
+        <div className="container card-container">
+        <h2>Recent Posts</h2>
           {
-            this.state.loading === true ? <h1>loading...</h1> : 
-            this.state.posts.map((post, index) => {
-              return (
-                <Link key={index}
-                  className="card-list"
-                  to={{
-                    pathname: `/post/${post.id_post}`,
-                    state: {
-                      titlePost: post.post.post_title,
-                      contentPost: post.post.post_content
-                    }
-                  }}>
-                  <h1>{post.post.post_title}</h1>
-                </Link>
-              )
-            })
+            this.state.loading === true ? <h1>loading...</h1> :
+              this.state.posts.map((post, index) => {
+                return (
+                  <Link key={index}
+                    className="card-list"
+                    to={{
+                      pathname: `/post/${post.id_post}`,
+                      state: {
+                        titlePost: post.post.post_title,
+                        contentPost: post.post.post_content
+                      }
+                    }}>
+                    <h1>{post.post.post_title}</h1>
+                  </Link>
+                )
+              })
           }
         </div>
-
       </div>
     )
   }
@@ -115,9 +115,9 @@ export default class Home extends Component {
 const HeaderLink = (props) => {
   if (props.isLogged) {
     return (
-      <div className="">
+      <div>
         <Link className="auth-btn" to="/addpost">Add Post</Link>
-        <button style={{backgroundColor: 'transparent', color: 'red', border: 'none', cursor: 'pointer', outline: 'none'}} onClick={() => fire.auth().signOut()}>Logout</button>
+        <button style={{ backgroundColor: 'transparent', color: 'red', border: 'none', cursor: 'pointer', outline: 'none' }} onClick={() => fire.auth().signOut()}>Logout</button>
       </div>
     )
   }
