@@ -76,11 +76,12 @@ export default class Home extends Component {
                         titlePost: post.post.post_title,
                         contentPost: post.post.post_content,
                         datePost: new Date(post.post.createdAt).toDateString(),
-                        author: post.post.email
+                        author: post.post.email,
+                        uid: post.post.uid
                       }
                     }}>
                     <h1>{post.post.post_title}</h1>
-                    <p style={{fontSize: 12, margin: '10px 0'}}><i class="fas fa-clock"></i> {new Date(post.post.createdAt).toDateString()}</p>
+                    <p style={{fontSize: 12, margin: '10px 0'}}><i className="fas fa-clock"></i> {new Date(post.post.createdAt).toDateString()}</p>
                     <p>{renderHTML(post.post.post_content.substring(0, 50) + '...')}</p>
                   </Link>
                 )

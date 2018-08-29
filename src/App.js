@@ -27,6 +27,8 @@ class App extends Component {
           authed: true,
           user: user
         })
+        localStorage.setItem('authed', true);
+        localStorage.setItem('uid', this.state.user.uid)
         localStorage.setItem('user', JSON.stringify(this.state.user));
         console.log(user);
       } else {
@@ -34,7 +36,9 @@ class App extends Component {
           authed: false,
           user: null
         })
+        localStorage.setItem('authed', false);
         localStorage.removeItem('user');
+        localStorage.setItem('uid', null)
       }
     })
   }

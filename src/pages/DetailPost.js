@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import SweetAlert from 'react-bootstrap-sweetalert';
 import fire from '../config/fire';
 
+
+
 export default class DetailPost extends Component {
 
   constructor(props) {
@@ -19,7 +21,8 @@ export default class DetailPost extends Component {
     }
 
     this.postId = props.location.state.idPost;
-    this.uidLocal = JSON.parse(localStorage.getItem('user')).uid;
+    this.auhted = localStorage.getItem('authed');
+    this.uidLocal = localStorage.getItem('uid');
 
   }
 
@@ -86,12 +89,14 @@ export default class DetailPost extends Component {
         <div className="detail-post-container">
           {renderHTML(this.state.post_content)}
         </div>
+        <hr />
         {
           (this.state.uid === this.uidLocal) ?
             <div style={{
               width: '100%',
               display: 'flex',
-              justifyContent: 'flex-end'
+              justifyContent: 'flex-end',
+              margin: '20px 0'
             }}>
               <Link to={{
                 pathname: `/edit/${this.props.location.state.idPost}`,
@@ -100,9 +105,13 @@ export default class DetailPost extends Component {
                   title: this.props.location.state.titlePost,
                   contentPost: this.props.location.state.contentPost
                 }
-              }}><i class="fas fa-edit fa-2x"></i></Link>
+              }}><i style={{color: '#111'}} class="fas fa-edit fa-2x"></i></Link>
               &nbsp;&nbsp;&nbsp;&nbsp;
-            <button onClick={this.removePost}><i class="fas fa-trash fa-2x"></i></button>
+            <button
+                style={{ border: 'none', outline: 'none', cursor: 'pointer' }}
+                onClick={this.removePost}>
+                <i class="fas fa-trash fa-2x"></i>
+              </button>
             </div> : null
         }
         <SweetAlert
@@ -114,7 +123,7 @@ export default class DetailPost extends Component {
           title="Apa kamu yakin?"
           show={this.state.showAlert}
           onConfirm={this.confirmRemove}
-          onCancel={() => this.setState({showAlert: false})}
+          onCancel={() => this.setState({ showAlert: false })}
         />
       </div>
     )

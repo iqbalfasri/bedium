@@ -3,7 +3,7 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { Link } from 'react-router-dom';
 import SweetAlert from 'react-bootstrap-sweetalert';
-import fire from '../config/fire';
+import fire, { TimeStamp } from '../config/fire';
 
 export default class EditPost extends Component {
   constructor(props) {
@@ -11,7 +11,8 @@ export default class EditPost extends Component {
 
     this.state = {
       title: props.location.state.title,
-      body: props.location.state.contentPost
+      body: props.location.state.contentPost,
+      showAlert: false
     }
 
     this.postId = props.location.state.idPost;
@@ -22,10 +23,33 @@ export default class EditPost extends Component {
     dbref.once('value')
       .then(data => console.log(data.val()))
       .catch(error => console.log(error))
-    
+  }
+
+  editPost = e => {
+    e.preventDefault();
     // Update
+    const dbref = fire.database().ref().child(`bedium/${this.postId}`);
     dbref.update({
-      
+      post_title: this.state.title,
+      post_content: this.state.body,
+      createdAt: TimeStamp
+    }, (error) => {
+      if (error) {
+        console.log('Gagal Edit', error);
+        return;
+      }
+      this.setState({
+        showAlert: true
+      })
+    });
+  }
+
+  onConfirm = () => {
+    this.setState({
+      showAlert: false
+    }, () => {
+      // Langsung dialihkan ke halaman utama
+      window.location.replace('/');
     })
   }
 
@@ -70,7 +94,13 @@ export default class EditPost extends Component {
                 console.log(this.state.body)
               })}
             />
-            <button onClick={this.editPost} className="my-button">Tambahkan</button>
+            <button onClick={this.editPost} className="my-button">Edit post</button>
+            <SweetAlert
+              success
+              title="Berhasil edit post"
+              show={this.state.showAlert}
+              onConfirm={this.onConfirm}
+            />
           </form>
         </div>
       </div>
