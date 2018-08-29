@@ -8,13 +8,15 @@ import Signin from './pages/Signin';
 import NotFound from './pages/NotFound';
 import DetailPost from './pages/DetailPost';
 import AddPost from './pages/AddPost';
+import EditPost from './pages/EditPost';
 
 class App extends Component {
   constructor() {
     super();
 
     this.state = {
-      authed: false
+      authed: false,
+      user: {}
     }
   }
 
@@ -23,12 +25,16 @@ class App extends Component {
       if (user) {
         this.setState({
           authed: true,
+          user: user
         })
+        localStorage.setItem('user', JSON.stringify(this.state.user));
         console.log(user);
       } else {
         this.setState({
           authed: false,
+          user: null
         })
+        localStorage.removeItem('user');
       }
     })
   }
@@ -46,6 +52,7 @@ class App extends Component {
           <PublicRoute authed={this.state.authed} path="/signup" component={Signup} />
           <Route path="/post/:article" component={DetailPost} />
           <PrivateRoute authed={this.state.authed} path='/addpost' component={AddPost} />
+          <PrivateRoute authed={this.state.authed} path='/edit/:id' component={EditPost} />
           <Route component={NotFound} />
         </Switch>
       </div>

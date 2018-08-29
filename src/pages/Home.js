@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import renderHTML from 'react-render-html';
 import fire from '../config/fire';
 
 export default class Home extends Component {
@@ -17,7 +18,7 @@ export default class Home extends Component {
   }
 
   componentDidMount() {
-    const dbref = fire.database().ref().child('bedium');
+    const dbref = fire.database().ref().child('bedium').orderByChild('post_title');
     dbref.on('child_added', (snap) => {
       const posts = this.state.posts;
       posts.push({
@@ -29,6 +30,7 @@ export default class Home extends Component {
         posts: posts,
         loading: false
       })
+      console.log(this.state.posts);
     })
 
     this.removeListener = fire.auth().onAuthStateChanged((user) => {
@@ -51,32 +53,6 @@ export default class Home extends Component {
     })
   }
 
-  submit() {
-    const dbref = fire.database().ref().child('bedium');
-    dbref.push().set({
-      post_title: this.state.title,
-      post_content: this.state.content
-    });
-  }
-
-  renderPost() {
-    this.state.posts.map((post, index) => {
-      return (
-        <Link key={index}
-          className="card-list"
-          to={{
-            pathname: `/post/${post.id_post}`,
-            state: {
-              titlePost: post.post.post_title,
-              contentPost: post.post.post_content
-            }
-          }}>
-          <h1>{post.post.post_title}</h1>
-        </Link>
-      )
-    })
-  }
-
   render() {
     return (
       <div>
@@ -87,7 +63,6 @@ export default class Home extends Component {
           </div>
         </div>
         <div className="container card-container">
-        <h2>Recent Posts</h2>
           {
             this.state.loading === true ? <h1>loading...</h1> :
               this.state.posts.map((post, index) => {
@@ -97,14 +72,19 @@ export default class Home extends Component {
                     to={{
                       pathname: `/post/${post.id_post}`,
                       state: {
+                        idPost: post.id_post,
                         titlePost: post.post.post_title,
-                        contentPost: post.post.post_content
+                        contentPost: post.post.post_content,
+                        datePost: new Date(post.post.createdAt).toDateString(),
+                        author: post.post.email
                       }
                     }}>
                     <h1>{post.post.post_title}</h1>
+                    <p style={{fontSize: 12, margin: '10px 0'}}><i class="fas fa-clock"></i> {new Date(post.post.createdAt).toDateString()}</p>
+                    <p>{renderHTML(post.post.post_content.substring(0, 50) + '...')}</p>
                   </Link>
                 )
-              })
+              }) 
           }
         </div>
       </div>
