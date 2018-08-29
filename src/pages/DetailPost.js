@@ -17,7 +17,8 @@ export default class DetailPost extends Component {
       post_content: '',
       post_title: '',
       uid: '',
-      showAlert: false
+      showAlert: false,
+      loading: true
     }
 
     this.postId = props.location.state.idPost;
@@ -36,7 +37,8 @@ export default class DetailPost extends Component {
           email,
           post_title,
           post_content,
-          uid
+          uid,
+          loading: false
         }, () => {
           console.log(this.state, 'from state')
         })
@@ -64,6 +66,9 @@ export default class DetailPost extends Component {
   }
 
   render() {
+    if (this.state.loading) {
+      return <div className="loading-modal"><h1>loading...</h1></div>;
+    }
     return (
       <div className="container">
         <div className="row header">
@@ -73,7 +78,7 @@ export default class DetailPost extends Component {
               flexDirection: 'row',
               alignItems: 'center'
             }}>
-              <Link to="/"><i class="fas fa-arrow-left fa-3x">&nbsp;&nbsp;</i></Link>
+              <Link to="/"><i style={{color: '#111'}} class="fas fa-arrow-left fa-3x">&nbsp;&nbsp;</i></Link>
               <h1 className="recent-title">{this.state.post_title}</h1>
             </div>
             <div className="meta-post">
@@ -105,7 +110,7 @@ export default class DetailPost extends Component {
                   title: this.props.location.state.titlePost,
                   contentPost: this.props.location.state.contentPost
                 }
-              }}><i style={{color: '#111'}} class="fas fa-edit fa-2x"></i></Link>
+              }}><i style={{ color: '#111' }} class="fas fa-edit fa-2x"></i></Link>
               &nbsp;&nbsp;&nbsp;&nbsp;
             <button
                 style={{ border: 'none', outline: 'none', cursor: 'pointer' }}

@@ -106,11 +106,12 @@ h6 {
 	padding: 20px 0;
 	position: relative;
 	text-decoration: none;
+	transition: .3s all ease-in-out;
 }
 
 .card-list:hover {
 	/* background-color: #111111; */
-	/* color: #fff; */
+	color: #555;
 }
 
 .card-list h1 {
@@ -135,7 +136,8 @@ h6 {
 
 .recent-title {
 	font-weight: bold;
-	font-size: 62px;
+	font-size: 32px;
+	color: #111111;
 	/* text-align: center; */
 }
 
@@ -293,8 +295,31 @@ h6 {
 	margin: 20px 0;
 }
 
+/* Loading Modal */
+.loading-modal {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	z-index: 111;
+	background-color: rgba(255, 255, 255, 0.7);
+	top: 0; left: 0; right: 0; bottom: 0;
+}
+.loading-modal h1 {
+	font-size: 24px;
+	font-weight: 300;
+	color: #000000;
+}
+
 @media only screen and (max-width: 780px) {
 	.auth .bg-signin, .bg {
 		display: none;
+	}
+	.recent-title {
+		font-size: 24px;
+		line-height: 1.11;
+	}
+	.meta-post p {
+		text-align: center;
 	}
 }

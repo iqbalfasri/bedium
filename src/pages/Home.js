@@ -64,7 +64,7 @@ export default class Home extends Component {
         </div>
         <div className="container card-container">
           {
-            this.state.loading === true ? <h1>loading...</h1> :
+            this.state.loading === true ? <div className="loading-modal"><h1>loading...</h1></div> :
               this.state.posts.map((post, index) => {
                 return (
                   <Link key={index}
@@ -97,15 +97,15 @@ const HeaderLink = (props) => {
   if (props.isLogged) {
     return (
       <div>
-        <Link className="auth-btn" to="/addpost">Add Post</Link>
-        <button style={{ backgroundColor: 'transparent', color: 'red', border: 'none', cursor: 'pointer', outline: 'none' }} onClick={() => fire.auth().signOut()}>Logout</button>
+        <Link className="auth-btn" to="/addpost">Tambah Post</Link>
+        <button style={{ backgroundColor: 'transparent', color: 'red', border: 'none', cursor: 'pointer', outline: 'none' }} onClick={() => fire.auth().signOut()}>Keluar</button>
       </div>
     )
   }
   return (
     <div>
-      <Link className="auth-btn" to="/signin">Signin</Link>
-      <Link className="auth-btn" to="/signup">Signup</Link>
+      <Link className="auth-btn" to="/signin">Masuk</Link>
+      <Link className="auth-btn" to="/signup">Daftar</Link>
     </div>
   )
 }

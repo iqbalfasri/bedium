@@ -63,7 +63,7 @@ export default class EditPost extends Component {
               flexDirection: 'row',
               alignItems: 'center'
             }}>
-              <Link to="/"><i class="fas fa-arrow-left fa-3x">&nbsp;&nbsp;</i></Link>
+              <Link to="/"><i style={{color: '#111'}} class="fas fa-arrow-left fa-3x">&nbsp;&nbsp;</i></Link>
               <h1 className="recent-title">Edit Post</h1>
             </div>
           </div>
