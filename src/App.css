@@ -107,11 +107,28 @@ h6 {
 	position: relative;
 	text-decoration: none;
 	transition: .3s all ease-in-out;
+	overflow: hidden;
+}
+
+.card-list::before {
+	content: "";
+	z-index: -1;
+	position: absolute;
+	width: 0;
+	bottom: 0;
+	height: 5px;
+	background-color: #ffd700;
+	transition: .3s all ease-in-out;
+}
+
+.card-list:hover::before {
+	height: 5px;
+	width: 150px;
 }
 
 .card-list:hover {
 	/* background-color: #111111; */
-	color: #555;
+	color: #000;
 }
 
 .card-list h1 {

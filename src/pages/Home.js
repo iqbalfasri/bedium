@@ -18,7 +18,7 @@ export default class Home extends Component {
   }
 
   componentDidMount() {
-    const dbref = fire.database().ref().child('bedium').orderByChild('post_title');
+    const dbref = fire.database().ref().child('bedium').orderByChild('createdAt');
     dbref.on('child_added', (snap) => {
       const posts = this.state.posts;
       posts.push({
@@ -88,6 +88,9 @@ export default class Home extends Component {
               }) 
           }
         </div>
+        <footer style={{textAlign: 'center', margin: '10px 0', fontSize: '12px'}}>
+          <p>Built with ReactJS and Firebase | <a target="_blank" href="https://github.com/iqbalfasri/bedium">View source code</a></p>
+        </footer>
       </div>
     )
   }
