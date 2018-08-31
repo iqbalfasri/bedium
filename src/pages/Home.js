@@ -101,10 +101,11 @@ export default class Home extends Component {
 
 const HeaderLink = (props) => {
   if (props.isLogged) {
+    const defaultPhoto = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGVeEPG3S4_3BnzcE_f-ahGEuBLVqJx63wHqVYfNJIdvlKsTKz';
     return (
       <div>
         <Link className="auth-btn" to="/addpost">Tambah Post</Link>
-        <img src={props.photoUrl} />
+        <img src={(props.photoUrl === null) ? defaultPhoto : props.photoUrl} />
         <button style={{ backgroundColor: 'transparent', color: 'red', border: 'none', cursor: 'pointer', outline: 'none' }} onClick={() => fire.auth().signOut()}>Keluar</button>
       </div>
     )
