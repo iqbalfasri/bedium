@@ -30,7 +30,7 @@ class App extends Component {
         localStorage.setItem('authed', true);
         localStorage.setItem('uid', this.state.user.uid)
         localStorage.setItem('user', JSON.stringify(this.state.user));
-        console.log(user);
+        console.log(user.photoURL);
       } else {
         this.setState({
           authed: false,

@@ -100,6 +100,12 @@ h6 {
 	line-height: 1.3;
 }
 
+.detail-post-container img {
+  width: 100%;
+  max-width: 100%;
+  margin: 20px 0;
+}
+
 .card-list {
 	color: #000;
 	display: block;
@@ -170,13 +176,21 @@ h6 {
 	width: 100%;
 	height: 60px;
 	top: 0; left: 0; right: 0;
-	position: fixed;
+  position: fixed;
 	/* background-color: red; */
 	/* margin-bottom: 50px; */
 	border-bottom: 1px solid #ddd;
 }
-.menu-nav .d-flex, .recent-title{
-	line-height: 60px;
+.menu-nav img {
+  position: relative;
+  width: 30px;
+  border-radius: 50px;
+  /* display: inline-flex; */
+  margin: 0 10px 0 15px;
+  top: 10px !important;
+}
+.menu-nav .d-flex, .recent-title, img{
+	line-height: 60px !important;
 }
 .menu-nav .recent-title {
 	display: block;
@@ -331,10 +345,13 @@ h6 {
 @media only screen and (max-width: 780px) {
 	.auth .bg-signin, .bg {
 		display: none;
-	}
+  }
+  .menu-nav h1 {
+    line-height: 60px !important;
+  }
 	.recent-title {
 		font-size: 24px;
-		line-height: 1.11;
+		line-height: 1.11 !important;
 	}
 	.meta-post p {
 		text-align: center;

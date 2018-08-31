@@ -9,6 +9,7 @@ export default class Home extends Component {
     this.state = {
       user: {},
       posts: [],
+      photoUrl: '',
 
       title: '',
       content: '',
@@ -35,9 +36,11 @@ export default class Home extends Component {
 
     this.removeListener = fire.auth().onAuthStateChanged((user) => {
       if (user) {
+        const { photoURL } = user;
         this.setState({
           authed: true,
-        })
+          photoUrl: photoURL
+        }, e => console.log(this.state.photoURL, 'photo url'))
       } else {
         this.setState({
           authed: false,
@@ -59,7 +62,7 @@ export default class Home extends Component {
         <div className="menu-nav">
           <div className="container d-flex justify-content-between">
             <h1 className="recent-title">Bedium</h1>
-            <HeaderLink isLogged={this.state.authed} />
+            <HeaderLink photoUrl={this.state.photoUrl} isLogged={this.state.authed} />
           </div>
         </div>
         <div className="container card-container">
@@ -81,14 +84,14 @@ export default class Home extends Component {
                       }
                     }}>
                     <h1>{post.post.post_title}</h1>
-                    <p style={{fontSize: 12, margin: '10px 0'}}><i className="fas fa-clock"></i> {new Date(post.post.createdAt).toDateString()}</p>
+                    <p style={{ fontSize: 12, margin: '10px 0' }}><i className="fas fa-clock"></i> {new Date(post.post.createdAt).toDateString()}</p>
                     <p>{renderHTML(post.post.post_content.substring(0, 50) + '...')}</p>
                   </Link>
                 )
-              }) 
+              })
           }
         </div>
-        <footer style={{textAlign: 'center', margin: '10px 0', fontSize: '12px'}}>
+        <footer style={{ textAlign: 'center', margin: '10px 0', fontSize: '12px' }}>
           <p>Built with ReactJS and Firebase | <a target="_blank" href="https://github.com/iqbalfasri/bedium">View source code</a></p>
         </footer>
       </div>
@@ -101,6 +104,7 @@ const HeaderLink = (props) => {
     return (
       <div>
         <Link className="auth-btn" to="/addpost">Tambah Post</Link>
+        <img src={props.photoUrl} />
         <button style={{ backgroundColor: 'transparent', color: 'red', border: 'none', cursor: 'pointer', outline: 'none' }} onClick={() => fire.auth().signOut()}>Keluar</button>
       </div>
     )

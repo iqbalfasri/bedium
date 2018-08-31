@@ -46,7 +46,7 @@ export default class AddPost extends Component {
       showAlert: false
     }, () => {
       // Langsung dialihkan ke halaman utama
-      window.location.replace('/');
+      this.props.history.replace('/');
     })
   }
 

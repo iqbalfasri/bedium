@@ -58,7 +58,7 @@ export default class DetailPost extends Component {
     dbref.remove()
       .then(() => {
         // alert('Remove Succeeded');
-        window.location.replace('/');
+        this.props.history.replace('/');
       })
       .catch(error => {
         console.log(error);
