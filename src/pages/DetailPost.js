@@ -21,7 +21,7 @@ export default class DetailPost extends Component {
       loading: true
     }
 
-    this.postId = props.location.state.idPost;
+    this.postId = props.match.params.article;
     this.auhted = localStorage.getItem('authed');
     this.uidLocal = localStorage.getItem('uid');
 
@@ -66,6 +66,7 @@ export default class DetailPost extends Component {
   }
 
   render() {
+    console.log(this.props, 'Console Props')
     if (this.state.loading) {
       return <div className="loading-modal"><h1>loading...</h1></div>;
     }
